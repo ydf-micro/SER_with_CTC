@@ -114,7 +114,7 @@ def UA_WA(X, y, X_mask, y_mask, sess, test_func):
 
 def train(model, test_func, X, y, X_train, X_test, X_train_mask,
           X_test_mask, y_train, y_test, y_train_mask, y_test_mask):
-    checkpoint_path = '../model/model_{epoch:03d}.hdf5'
+    checkpoint_path = '../model/ctc_model/ctc_model_{epoch:03d}.hdf5'
     sess = tf.Session()
 
     class_weights = np.unique(y, return_counts=True)[1] * 1.  # 每种情感多少个
