@@ -93,10 +93,10 @@ def data_preparation(params):
 
 def UA_WA(X, y, X_mask, y_mask, sess, test_func):
     inputs = {'the_input': X,
-                    'the_labels': y,
-                    'input_length': np.sum(X_mask, axis=1, dtype=np.int32),
-                    'label_length': np.squeeze(y_mask),
-                    }
+              'the_labels': y,
+              'input_length': np.sum(X_mask, axis=1, dtype=np.int32),
+              'label_length': np.squeeze(y_mask),
+              }
     preds = test_func([inputs["the_input"]])[0]
     decode_function = K.ctc_decode(preds[:, 2:, :], inputs["input_length"] - 2, greedy=False, top_paths=1)
     labellings = decode_function[0][0].eval(session=sess)
